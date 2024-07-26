@@ -18,6 +18,6 @@ after_success:
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
   ; fi`
 - export CLOUD=ericlixj82/coinexchangeservice-cloud
-- docker build -t $CLOUD:$COMMIT ./CLOUD
+- docker build -t $CLOUD:$COMMIT ./cloud
 - docker tag $CLOUD:$COMMIT $CLOUD:$TAG
 - docker push $CLOUD
