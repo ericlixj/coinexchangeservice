@@ -1,0 +1,6 @@
+version: '2.1'
+services:
+  cloud:
+    build: cloud
+    ports:
+      - 7000:7000
