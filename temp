@@ -1,25 +1,3 @@
-travis encrypt DOCKER_USER="ericli.xj@gmail.com"  -r ericlixj/coinexchange --add
-travis encrypt DOCKER_PASS="Liansu2013_918"  -r ericlixj/coinexchange --add
-travis encrypt DOCKER_EMAIL="ericli.xj@gmail.com"  -r ericlixj/coinexchange --add
-
-
-
-
- ericlixj@d207-216-57-148  /usr/local/opt/ruby/bin  travis encrypt DOCKER_USER="ericlixj@gmail.com"  -r ericlixj/piggymetrics
-travis encrypt DOCKER_PASS="6d,Fu@^7?7B_nnt"  -r ericlixj/piggymetrics
-travis encrypt DOCKER_EMAIL="ericlixj@gmail.com"  -r ericlixj/piggymetrics
-Please add the following to your .travis.yml file:
-
-  secure: ""
-
-Pro Tip: You can add it automatically by running with --add.
-Please add the following to your .travis.yml file:
-
-  secure: ""
-
-Pro Tip: You can add it automatically by running with --add.
-Please add the following to your .travis.yml file:
-
-  secure: "OrwXJBmTGj5OhYbFHpm+b2w8ljzr8TydPXxzwhZGDbkX7ozJ6R11IQbOmUXzoszPK429YLmReAWmO+QIStWxVlZ4BXOUA0vtRDKofGZ1IhH1VOaRuuy40pznhGfZ6YAKbq0U9xPKJBSpgRXSBs+x82mIZ+JUFbuDyJSDnOk3eitVJHoaNm/14OdoyQHKKVA44MIjjwtX1GI5/N8YrpV8N0OaemO8HcBK3GCQ1tVGEgPKIP2FcBIOQMRQ+2dV0uzUxCVKuanPXvgztay5FldOIsd/T+Fet4wgl3AqozUeGTLWvz+8vO3cNqKrVlYyKiW8+k2B0M8QxIiBi+Tp3IrHLBO8d8yFi/m2vtiNeorg6Oyog2VW+jIXXxnCwwAK1mf14fLcdLsZB6A7Bl6GVVYlBIcxQDxXOwU1+Rk2UecUMN7gt423exDOMBTknMtYZLm+mpPDuU5dMwABtNxAg/O/O9OV+OkXSl5l6YIHwUElk9KZ+iQb9xQd4NC6mHQhdh5nTkkvAJNO1L/g3M0PU9yoZ7BfQA7Z/VKCW6B+AdIvRUtvzeJufjh46iBgbVtbyR0K6VTLL0wGSqSj4rXXRaH6ZzN1AgdrEAsqO1hMpCiEK9E6bC/mQR29E++2pJAuDoEjEX70lG3YZwNrRqL6BQHqhx61jDTVxy/IMh8CZQW3PeA="
-
-Pro Tip: You can add it automatically by running with --add.
+travis encrypt DOCKER_USER="ericli.xj@gmail.com"  -r ericlixj/coinexchangeservice --add
+travis encrypt DOCKER_PASS="Liansu2013_918"  -r ericlixj/coinexchangeservice --add
+travis encrypt DOCKER_EMAIL="ericli.xj@gmail.com"  -r ericlixj/coinexchangeservice --add
