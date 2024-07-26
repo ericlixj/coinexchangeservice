@@ -1,0 +1,23 @@
+dist: trusty
+sudo: required
+services:
+- docker
+language: java
+jdk: oraclejdk8
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::7}
+  - secure: FYPDp+9tb8I57ewSeD+zaxp7k+FqOj5AxkAcf3X5Drg4+QPZCqaTm35y158/mLHJfwiQ1+UFrCSKb7Eh43UPdSq0cs3PXj7Lje3rjLa67+pFT8wrF7WdB4a6FcwfRmLjtkdwUNeuQNhfEcV9x9Mn7yQLgBdRqnXf7+jz7mdJNmIkCCENaZlh4QIJQP2RtNZB1BTs3KEbnO55jOrPtfYNesD1OrktfoXaHI75+xe3YuxGR+NBmnha65+fbBXh5CUa2csnRALQwosBk0Jz8egDzlPVArHwLfmesOsKXelRPlJfv0OeewyKnN/H8+7ab+tBT/OAkXdKRIGnzXpHOCd+yFo/iBSLuLljBTAOD9smXqyy7auwHyB32vuCc+u6r6yYBPsLY5niNtXBtduRLBTKf9AlsTLpB+OkGB0u85kLp15UgfoigkENzCuugy+n329HXqYaAG9K68xLN+cz9SRLlmZdS16V1VWRYN1Eh8cET5Oxugy3CZZ/RQiA6MR7yiOdgckM7HgOejpIFSm77f2dKypGtdV6nMc4jr+07HYc23ohJL8DAdWCrTZy3+L71UQbSVlDhRFSeABmNPVv0rs6ZdgPtY7hYISyVYMY0XNMdsbaa7d6K896ebREBfYXwNXV8QjtpwRR7z/ejTL8G/rZmHpJBiYQ4xxELKghnDAaKF4=
+  - secure: pE33jOPO+Ku0JomGS/fVOvLMupBVBx0m2vq2pdNDKbB4eyhpTemzfNTB//0OalAPihEQZwamVDwCLepajvdFcFyaWmcOOVN8Sl2UrU0ELN5w3oLVsbnBWAAvfN0ri7UDlvrj1KIWgkbw2RG+mdHrNd/pJpvGCum8dedcHMOPCawgm3l1umQNVj0Qt/9tQCt5rCecCDAlprd6coXzkWNXF+YzLXSos3dQnAZRUQqjAHRk2BwXz64RX7eLZ0rkKeKxsfNO34Y1w8afjayFEUtXzPlBGKEZqQC8zKcAxI0HxlvKDR5HdZQk8TTbj2tJpNLLiWvKdvX5sVEst2CxFvL+4fRyDNjYhYpt2M6qTBAtzFx6KnqyGTYuYxk/ZzOQcYaLbsELxxkZR5/weRdT1cuRHcG2Vj3l35lnI5qC38+t91gmuGIfBFD/LV8QD2TKTHEKrNbfQUl6B4Uv0qlKCNiV0Y0jNxTfF0g3tJUIqnSm/cvXE2qE1l2LjszRMQfVt9j5iPI/7NYlbqAppYOdDTpClz4XjdVzPQKBjOrFV+dO/4Avzn9rrImPmBCZZ39iLDuFStHrzSY4lppArJIZzksN3GIIrxPH6QtW/6SLmRxvHlxhGSCLrkEgwl7euAMUIFL2qwNnKIJ01M4X0Jzuz6Z0ErINVWwx5yMb6jf97KMSqsw=
+  - secure: LHXUAgn9iIGgwt88dIqzo4t8Y8umrbDjYaG3a2o/GXTCWmMbF4utN6SKwM1fvsToZ/KOcCh4Wdm9lYOf8cvwB1+CG7fe6o5WMsChvYZHaRFhHK9hLQ5qu5B0xgtVDTSQ+18YAAH/z2gr8wwaOtvIz7skScqqv9/p7C40gZF7OtJ6cujmJ6yHCrTQtkyqgBp/28HqQJXBBnJ6C/qJMk4o4tRh8UFwOAz3OO8Y/vamzoXz4Axk8wZn0+f6uJ8a4ph7lxzFwaTo5LNT44sZ1Ktdyf+8QMNGfHOU1Um7lJGRaWjBQK4OD5xBgqzu+E36dEBmBr20bOAr9J3Zn2mxMm3MWGVLRG0M+IxgkciWI4pZp0xnZJiX/O7NOxulzadaUKddGvaadg3AFIU6fQFARopCaIgfGIY+XSCTyyVDrdM/+xtsFKr8Et6adWkRZ6ba0OYwGQUO+7TfdZvZdCgZI3iN3R0FgZ2lK2Txf83zGquS++jwpbwh/fvv6YhUlQ4LuP5KJZckYBuYFFtIpRL3Rm2If+RbdMycTDqmLw06atuCev/NzAupJ/9IvGLqZwy+qzbz8FgIz/xbgdBF27/aS/h9qX3cLtUWSm0//eGYLSMTF/sgzeRFU3Hh6dL68J2iEaF6riIJddyOg5B8KTPsRlRleBIH1EVSSpvgAqdgOSHkf/I=
+script:
+- echo "skipping tests"
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+  ; fi`
+- export CLOUD=ericlixj82/coin-exchange-cloud
+- docker build -t $CLOUD:$COMMIT ./CLOUD
+- docker tag $CLOUD:$COMMIT $CLOUD:$TAG
+- docker push $CLOUD
