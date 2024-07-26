@@ -3,7 +3,7 @@ services:
   cloud:
     environment:
       CLOUD_SERVICE_PASSWORD: $CLOUD_SERVICE_PASSWORD
-    image: ericlixj82/coinexchange-cloud
+    image: ericlixj82/coinexchangeservice-cloud
     restart: always
     ports:
       - 7000:7000
