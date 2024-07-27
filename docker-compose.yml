@@ -1,5 +1,61 @@
 version: '2.1'
 services:
+  #mysql
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./sql/bizzan-db.sql:/data/application/init.sql
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: bizzan
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: 123456
+
+  #redis
+  redis:
+    image: redislabs/redismod
+    ports:
+      - '6379:6379'
+
+  # Database - Mongo DB
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - "27017:27017"
+
+  #kafka + zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
+  #注册中心 eureka
   cloud:
     environment:
       CLOUD_SERVICE_PASSWORD: $CLOUD_SERVICE_PASSWORD
@@ -11,3 +67,23 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  #用户中心 ucenter-api
+  ucenter-api:
+    environment:
+      CLOUD_SERVICE_PASSWORD: $CLOUD_SERVICE_PASSWORD
+    image: ericlixj82/coinexchangeservice-ucenter-api
+    depends_on:
+      - mysql
+      - mongo
+      - redis
+      - kafka
+    restart: always
+    ports:
+      - 6001:6001
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+

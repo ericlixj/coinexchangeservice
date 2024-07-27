@@ -1,6 +1,10 @@
-version: '2.1'
 services:
   cloud:
     build: cloud
     ports:
       - 7000:7000
+
+  ucenter-api:
+    build: ucenter-api
+    ports:
+      - 6001:6001
