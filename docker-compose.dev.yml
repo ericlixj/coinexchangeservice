@@ -4,7 +4,7 @@ services:
     ports:
       - 7000:7000
 
-  ucenter-api:
-    build: ucenter-api
-    ports:
-      - 6001:6001
+#  ucenter-api:
+#    build: ucenter-api
+#    ports:
+#      - 6001:6001
