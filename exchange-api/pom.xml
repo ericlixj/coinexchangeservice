@@ -23,6 +23,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
@@ -78,12 +82,11 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
-			<groupId>com.sparkframework</groupId>
-			<artifactId>spark-core</artifactId>
-			<scope>system</scope>
+            <groupId>com.bizzan.bitrade</groupId>
+            <artifactId>spark-core</artifactId>
             <version>2.6.0</version>
-			<systemPath>${pom.basedir}/lib/spark-core-2.6.0.jar</systemPath>
-		</dependency>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

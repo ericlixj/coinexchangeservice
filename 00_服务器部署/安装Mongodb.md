@@ -79,7 +79,7 @@ db.createUser( {user: "admin",pwd: "123456",roles: [ { role: "userAdminAnyDataba
 
 ```
 use bitrade
-db.createUser({user: "root",pwd: "root",roles: [{ role: "readWrite", db: "bitrade" }]})
+db.createUser({user: "bizzan",pwd: "123456",roles: [{ role: "readWrite", db: "bizzan" }]})
 ```
 
 使用创建的用户root登录进行数据库操作

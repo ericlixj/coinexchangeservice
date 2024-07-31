@@ -8,3 +8,8 @@ services:
 #    build: ucenter-api
 #    ports:
 #      - 6001:6001
+#
+#  admin-api:
+#    build: admin-api
+#    ports:
+#      - 6010:6010

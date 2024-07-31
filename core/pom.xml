@@ -5,7 +5,6 @@
 		<groupId>com.bizzan.bitrade</groupId>
 		<artifactId>bitrade-parent</artifactId>
 		<version>1.0</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>core</artifactId>
@@ -84,11 +83,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.sparkframework</groupId>
+			<groupId>com.bizzan.bitrade</groupId>
 			<artifactId>spark-core</artifactId>
-			<scope>system</scope>
 			<version>2.6.0</version>
-			<systemPath>${pom.basedir}/lib/spark-core-2.6.0.jar</systemPath>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

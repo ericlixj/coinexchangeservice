@@ -54,25 +54,36 @@ public class CheckExchangeRate {
     
     private BigDecimal getUsdRate(String unit) {
         String url = "http://" + serviceName + "/market/exchange-rate/usd/{coin}";
-        ResponseEntity<MessageResult> result = restTemplate.getForEntity(url, MessageResult.class, unit);
-        log.info("remote call:url={},unit={}", url, unit);
-        if (result.getStatusCode().value() == 200 && result.getBody().getCode() == 0) {
-            BigDecimal rate = new BigDecimal((String) result.getBody().getData());
-            return rate;
-        } else {
+        try{
+            ResponseEntity<MessageResult> result = restTemplate.getForEntity(url, MessageResult.class, unit);
+            log.info("remote call:url={},unit={}", url, unit);
+            if (result.getStatusCode().value() == 200 && result.getBody().getCode() == 0) {
+                BigDecimal rate = new BigDecimal((String) result.getBody().getData());
+                return rate;
+            } else {
+                return BigDecimal.ZERO;
+            }
+        }catch (Exception ex){
+            log.error(ex.getMessage());
             return BigDecimal.ZERO;
         }
     }
 
     private BigDecimal getUsdCnyRate() {
         String url = "http://" + serviceName + "/market/exchange-rate/usd-cny";
-        ResponseEntity<MessageResult> result = restTemplate.getForEntity(url, MessageResult.class);
-        log.info("remote call:url={}", url);
-        if (result.getStatusCode().value() == 200 && result.getBody().getCode() == 0) {
-            BigDecimal rate = new BigDecimal((Double) result.getBody().getData());
-            return rate;
-        } else {
+        try {
+            ResponseEntity<MessageResult> result = restTemplate.getForEntity(url, MessageResult.class);
+            log.info("remote call:url={}", url);
+            if (result.getStatusCode().value() == 200 && result.getBody().getCode() == 0) {
+                BigDecimal rate = new BigDecimal((Double) result.getBody().getData());
+                return rate;
+            } else {
+                return BigDecimal.ZERO;
+            }
+        }catch (Exception ex){
+            log.error(ex.getMessage());
             return BigDecimal.ZERO;
         }
+
     }
 }

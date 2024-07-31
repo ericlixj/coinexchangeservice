@@ -43,7 +43,7 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class WebApplicationTest {
+public class AdminApplicationTest {
 
 @Autowired
 private MemberWalletDao memberWalletDao ;

@@ -6,6 +6,7 @@
 $ wget http://download.redis.io/releases/redis-3.2.11.tar.gz
 $ tar xzf redis-3.2.11.tar.gz
 $ cd redis-3.2.11
+sudo yum groupinstall -y "Development Tools"
 $ make
 ```
 

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bizzan.bitrade.WebApplication;
 import com.bizzan.bitrade.service.OrderDetailAggregationService;
 import com.bizzan.bitrade.util.DateUtil;
 
@@ -15,7 +14,7 @@ import com.bizzan.bitrade.util.DateUtil;
  * @date 2020年03月22日
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=WebApplication.class)
+@SpringBootTest(classes= AdminApplication.class)
 public class DividendControllerTest {
     @Autowired
     private OrderDetailAggregationService orderDetailAggregationService;

@@ -13,7 +13,7 @@ import com.bizzan.bitrade.service.OtcCoinService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApiApplicationTests {
+public class OtcApiApplicationTests {
     @Autowired
     private OtcCoinService otcCoinService;
     @Autowired

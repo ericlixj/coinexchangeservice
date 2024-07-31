@@ -105,6 +105,16 @@ services:
 #      - microservice-network
 
 
+
+#  nginx:
+#    image: nginx:latest
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx/nginx-dev.conf:/etc/nginx/nginx.conf:ro
+#    networks:
+#      - microservice-network
+
 networks:
   microservice-network:
     driver: bridge
