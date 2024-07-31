@@ -1,2 +1,10 @@
 /.idea/
 /logs/
+/admin/logs/
+/chat/logs/
+/exchange/logs/
+/exchange-api/logs/
+/market/logs/
+/otc-api/logs/
+/ucenter-api/logs/
+/wallet/logs/
